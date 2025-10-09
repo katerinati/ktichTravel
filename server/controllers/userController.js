@@ -74,6 +74,14 @@ class UserController {
             next(error);
         }
     }
+    async currentUser(req,res, next) {
+        try {
+            const currentUser = req.user;
+            return res.json(currentUser);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = new UserController();

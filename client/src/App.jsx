@@ -6,7 +6,8 @@ import auth from "./store/auth.js";
 function App() {
     useEffect(() => {
         properties.fetchProperties()
-        auth.fetchUser()
+        const res = auth.fetchUser()
+        console.log(res)
     }, []);
     return (
         <div >

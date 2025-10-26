@@ -5,6 +5,7 @@ import properties from "./store/properties.js";
 import FilterContainer from "./FilterContainer.jsx";
 import PropertyItemsContainer from "./PropertyItemsContainer.jsx";
 import auth from "./store/auth.js";
+import AuthPopUp from "./AuthPopUp.jsx";
 
 
 const  Home = observer(() => {
@@ -16,11 +17,17 @@ const  Home = observer(() => {
     return (
         <>
             <div className={styles.bg}>
-                {auth.isUserUnauthorised ? <h1>АВТОРИЗУЙСЯ</h1> : <h1>Я АВТОРИЗОВАН</h1>}
                 <h1>Peace, nature, dream</h1>
                 <p>Find and book a great experience</p>
             </div>
+            <AuthPopUp/>
             <div className={styles.contentContainer}>
+                {auth.isUserUnauthorised
+                    ?
+                    <button>Войти/зарегистрироваться</button>
+                    :
+                    <h1>Я АВТОРИЗОВАН</h1>}
+
                 <FilterContainer/>
                 <PropertyItemsContainer/>
             </div>

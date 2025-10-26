@@ -21,6 +21,23 @@ import $api from "../http/index.js";
     handleUnauthorised() {
         this.isUserUnauthorised = true
     }
+    async signUserUp(userData) {
+            try {
+                   const res = await $api.post("/registration", userData);
+                   console.log(res.data)
+            } catch (err) {
+                console.log(err)
+            }
+    }
+    async loginUser(userData) {
+        try {
+            const res = await $api.post("/login", userData);
+            localStorage.setItem("token", res.data.accessToken);
+            console.log(res.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 }
 

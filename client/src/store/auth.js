@@ -4,7 +4,8 @@ import $api from "../http/index.js";
 
 
  class Auth {
-     isUserUnauthorised = false;
+     isUserUnauthorised = true;
+     currentUserData = null;
     constructor() {
         makeAutoObservable(this)
     }
@@ -12,6 +13,7 @@ import $api from "../http/index.js";
     async fetchUser() {
         try {
             const res = await $api.get("/users/current");
+            this.currentUserData = res.data;
 
             console.log(res.data)
         } catch(err) {

@@ -1,0 +1,106 @@
+.authPopUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100000;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hidden {
+    display: none;
+}
+.visible {
+    display: flex;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 50%;
+    width: 30%;
+    padding: 30px;
+    border-radius: 15px;
+
+}
+.inputMain {
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid #e5e5e5;
+    padding: 10px 0;
+    width: 400px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+.inputMain::placeholder {
+    color: #adb5bd;
+    font-style: italic;
+    opacity: 1;
+    transition: color 0.3s;
+}
+.inputMain:focus {
+    border-bottom-color: #0f4c5c;
+}
+
+.inputMain:focus::placeholder {
+    color: #1b263b;
+}
+.closeBtn {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+}
+.signUpBtn {
+    background: linear-gradient(45deg, #9b59b6, #e74c3c);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 35px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.signUpBtn::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #9b59b6, #e74c3c);
+    border-radius: 40px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.signUpBtn:hover::after {
+    opacity: 0.6;
+    filter: blur(10px);
+}
+.switchAuthStatus {
+    text-decoration: none;
+    color:  #9b59b6;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: color 0.4s ease;
+}
+.switchAuthStatus:hover {
+    color: #e74c3c;
+}

@@ -20,13 +20,8 @@ const  Home = observer(() => {
                 <h1>Peace, nature, dream</h1>
                 <p>Find and book a great experience</p>
             </div>
-            <AuthPopUp/>
+            {/*<AuthPopUp/>*/}
             <div className={styles.contentContainer}>
-                {auth.isUserUnauthorised
-                    ?
-                    <button>Войти/зарегистрироваться</button>
-                    :
-                    <h1>Я АВТОРИЗОВАН</h1>}
 
                 <FilterContainer/>
                 <PropertyItemsContainer/>

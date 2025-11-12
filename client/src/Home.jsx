@@ -4,8 +4,7 @@ import {observer} from "mobx-react-lite";
 import properties from "./store/properties.js";
 import FilterContainer from "./FilterContainer.jsx";
 import PropertyItemsContainer from "./PropertyItemsContainer.jsx";
-import auth from "./store/auth.js";
-import AuthPopUp from "./AuthPopUp.jsx";
+import Header from "./Header.jsx";
 
 
 const  Home = observer(() => {
@@ -16,11 +15,15 @@ const  Home = observer(() => {
     }, [properties]);
     return (
         <>
+
             <div className={styles.bg}>
+                <div className={styles.profileMenuWrapper}>
+                <Header/>
+                </div>
+
                 <h1>Peace, nature, dream</h1>
                 <p>Find and book a great experience</p>
             </div>
-            {/*<AuthPopUp/>*/}
             <div className={styles.contentContainer}>
 
                 <FilterContainer/>

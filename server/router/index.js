@@ -14,5 +14,6 @@ router.get('/activate/:link', userController.activate)
 router.get('/refresh', userController.refresh)
 router.get('/users', authMiddleware, userController.getUsers)
 router.get('/users/current', authMiddleware, userController.currentUser)
+router.patch('/profile/:id', userController.updateUser)
 
 module.exports = router;

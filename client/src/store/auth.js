@@ -40,6 +40,16 @@ import $api from "../http/index.js";
             console.log(err)
         }
     }
+    async updateUser(userData) {
+            try {
+
+                const res = await $api.patch(`/profile/${this.currentUserData.id}`, userData);
+                console.log('now', userData, this.currentUserData.id);
+                console.log(res.data)
+            } catch (err) {
+                console.log(err)
+            }
+    }
 
 }
 

@@ -1,0 +1,40 @@
+.wrapper {
+    background-color: white;
+    color: black;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 2fr;
+    border-top: 1px solid #ced4da ;
+}
+.avatarSmall {
+    background:  url("../assets/avatar.png")  no-repeat center/contain;
+    width: 60px;
+    height: 60px;
+}
+.leftMenu {
+    border-right: 1px solid #ced4da;
+    padding: 60px;
+}
+.editBtn {
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.rightMenu {
+    padding: 60px 0 20px 80px;
+}
+.menuList {
+    list-style-type: none;
+}
+.menuBtn {
+    border: none;
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.active {
+    background-color: red;
+}

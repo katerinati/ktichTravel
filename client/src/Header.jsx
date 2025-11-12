@@ -3,29 +3,38 @@ import auth from "./store/auth.js";
 import AuthPopUp from "./AuthPopUp.jsx";
 import styles from "./styles/Auth.module.css"
 import {observer} from "mobx-react-lite";
+import ProfileMenu from "./ProfileMenu.jsx";
 
 
 const Header = observer(() => {
     const [popupVisible, setPopupVisible] = useState(false);
-    const handleClick = useCallback(() => {
+    const [profileMenuVisible, setProfileMenuVisible] = useState(false);
+    const showPopUp = useCallback(() => {
         setPopupVisible(!popupVisible);
     }, [popupVisible])
 
+    const showProfileMenu = useCallback(() => {
+        setProfileMenuVisible(!profileMenuVisible);
+    }, [profileMenuVisible])
 
     return (
         <div>
 
             {auth.currentUserData?.email.length > 0 && auth.currentUserData.email.length !== undefined
                 ?
-                <div>Профиль</div>
+                <div onClick={showProfileMenu}>
+                    {profileMenuVisible
+                        ?
+                        <ProfileMenu/>
+                        :
+                        <div className={styles.avatar}/>
+
+                    }
+                </div>
                 :
-                <button onClick={handleClick}>Войти/зарегистрироваться</button>
+                <button className={styles.authBtn} onClick={showPopUp}>Войти/зарегистрироваться</button>
 
             }
-                <div>
-                    jfjfgj
-                </div>
-
             <AuthPopUp isVisible={popupVisible} changePopupVisible={setPopupVisible} />
         </div>
     );

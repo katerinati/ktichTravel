@@ -3,6 +3,8 @@ import {useEffect} from "react";
 import properties from "./store/properties.js";
 import auth from "./store/auth.js";
 import Header from "./Header.jsx";
+import {Route, Routes} from "react-router-dom";
+import Profile from "./Profile.jsx";
 
 function App() {
     useEffect(() => {
@@ -11,9 +13,12 @@ function App() {
         console.log(res)
     }, []);
     return (
-        <div >
-            <Header/>
-            <Home/>
+        <div>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/profile" element={<Profile/>}/>
+
+            </Routes>
 
         </div>
     )

@@ -85,23 +85,13 @@ class UserService {
         return users;
     }
 
-    async updateUser(id, firstName, lastName, age, dreamCountry) {
-        // const user = await UserModel.findOne({id});
-        const user = await UserModel.findOneAndUpdate({id}, {firstName, lastName, age, dreamCountry},)
-        console.log('updateUser', user)
-        // @todo разобраться почему id undefined
-        console.log('updateUser', id)
+    async updateUser(req, res) {
+        const {firstName, lastName, age, dreamCountry} = req.body;
+        const user = await UserModel.findOneAndUpdate({_id: req.user.id}, {firstName, lastName, age, dreamCountry}, {new: true});
 
-        if (!user) {
-            throw ApiError.BadRequest("Пользователь с таким id не найден")
-        }
-        // if(firstName !== undefined) user.firstName = firstName;
-        // if(lastName !== undefined) user.lastName = lastName;
-        // if(age !== undefined) user.age = age;
-        // if(dreamCountry !== undefined) user.dreamCountry = dreamCountry;
-        // await user.save();
 
         const userDto = new UserDto(user);
+
         return {
             user: userDto,
         }

@@ -105,7 +105,9 @@ const AuthPopUp = ({isVisible, changePopupVisible}) => {
                 }
                 <a className={styles.switchAuthStatus} onClick={handleAuthStatusClick}>{loginForm ? "Зарегистрироваться" : "Уже есть аккаунт?"}</a>
 
-                <button className={styles.closeBtn} onClick={handleClickOnClose}>X</button>
+                <button className={styles.closeBtn} onClick={handleClickOnClose}/>
+                    {/*<div className={styles.close}/>*/}
+                {/*</button>*/}
             </div>
 
         </div>

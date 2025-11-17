@@ -56,8 +56,13 @@
 }
 .closeBtn {
     position: absolute;
-    top: 1px;
-    right: 1px;
+    top: 5px;
+    right: 5px;
+    background: url("../assets/closeIcon.png") no-repeat center/contain;
+    width: 25px;
+    height: 25px;
+    border: none;
+
 }
 .signUpBtn {
     background: linear-gradient(45deg, #9b59b6, #e74c3c);

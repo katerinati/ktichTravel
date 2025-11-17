@@ -32,6 +32,7 @@ const Profile = observer(() => {
         if (formData.firstName.length > 0 || formData.lastName.length > 0 || formData.age.length > 0 || formData.dreamCountry.length > 0 ) {
             console.log("boo", formData)
             auth.updateUser(formData)
+            console.log(formData)
         }
 
 
@@ -64,10 +65,10 @@ const Profile = observer(() => {
                 {showForm
                     &&
                     <form onSubmit={handleDataOnSubmit}>
-                        <input type="text" placeholder="Имя"  name="firstName" onChange={handleDataOnChange}/>
-                        <input type="text" placeholder="Фамилия" name="lastName" onChange={handleDataOnChange}/>
-                        <input type="text" placeholder="Возраст" name="age" onChange={handleDataOnChange}/>
-                        <input type="text" name="dreamCountry" placeholder="В какой стране мечтаю побывать" onChange={handleDataOnChange}/>
+                        <input type="text" required placeholder="Имя"  name="firstName" onChange={handleDataOnChange}/>
+                        <input type="text" required placeholder="Фамилия" name="lastName" onChange={handleDataOnChange}/>
+                        <input type="text" required placeholder="Возраст" name="age" onChange={handleDataOnChange}/>
+                        <input type="text" required name="dreamCountry" placeholder="В какой стране мечтаю побывать" onChange={handleDataOnChange}/>
                         <button>Готово</button>
                     </form>
                 }

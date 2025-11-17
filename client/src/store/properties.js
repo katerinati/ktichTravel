@@ -1,4 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
+import $api from "../http/index.js";
 
 class Properties {
     propertiesList = []
@@ -13,10 +14,10 @@ class Properties {
     fetchProperties () {
         this.isFiltered = false
         runInAction(() => {
-            fetch("https://raw.githubusercontent.com/devchallenges-io/curriculum/refs/heads/main/4-frontend-libaries/challenges/group_1/data/property-listing-data.json")
-                .then(response => response.json())
+                $api.get("/property")
                 .then(data => {
-                    this.propertiesList = [...data]
+                    console.log(data)
+                    this.propertiesList = [...data.data]
                     this.propertiesLocation = [...new Set(this.propertiesList.map(item => item.location))];
                     this.propertiesType = [...new Set(this.propertiesList.map(item => item.capacity.bedroom))];
                     this.propertiesSuperhost = [...new Set(this.propertiesList.map(item => item.superhost))];

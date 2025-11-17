@@ -46,10 +46,6 @@ class TokenService {
         const tokenData = await tokenModel.findOne({refreshToken});
         return tokenData;
     }
-    decodeToken (token) {
-        const decodedToken = jwt.decode(token);
-        return decodedToken;
-    }
 }
 
 module.exports = new TokenService();

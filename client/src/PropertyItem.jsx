@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import styles from "./App.module.css"
+import {Link} from "react-router-dom";
+import properties from "./store/properties.js";
 
 
 const PropertyItem = observer(({property}) => {
+
     return (<div className={styles.propertyItemWrapper}>
         <img className={styles.propertyImg} src={property.image} alt="property"/>
         <div className={styles.margin}>
@@ -27,7 +30,13 @@ const PropertyItem = observer(({property}) => {
                 <div>
                     <span className={styles.price}>${property.price}</span>
                     /night
-                    <button>Забронировать</button>
+
+                            <Link to={`property/${property.propertyId}`} rel="noopener noreferrer">
+
+                            Забронировать
+                            </Link>
+
+
                 </div>
                 <div className={styles.ratingWrapper}>
                     <div className={styles.ratingImg}/>

@@ -5,21 +5,26 @@ import auth from "./store/auth.js";
 import Header from "./Header.jsx";
 import {Route, Routes} from "react-router-dom";
 import Profile from "./Profile.jsx";
+import Property from "./Property.jsx";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {LocalizationProvider} from "@mui/x-date-pickers";
 
 function App() {
     useEffect(() => {
         properties.fetchProperties()
-        const res = auth.fetchUser()
-        console.log(res)
+        auth.fetchUser()
     }, []);
     return (
         <div>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/profile" element={<Profile/>}/>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/property/:id" element={<Property/>}/>
 
+                </Routes>
+            </LocalizationProvider>
         </div>
     )
 }

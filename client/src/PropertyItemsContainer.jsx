@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import properties from "./store/properties.js";
 import PropertyItem from "./PropertyItem.jsx";
 import {observer} from "mobx-react-lite";
+import Property from "./Property.jsx";
 
 const PropertyItemsContainer = observer(() => {
     return (
@@ -19,7 +20,9 @@ const PropertyItemsContainer = observer(() => {
                      :
                     properties.propertiesList.map((item, index) => {
                         return (
+                            <>
                             <PropertyItem key={index} property={item}/>
+                            </>
                         )
                     })
             }

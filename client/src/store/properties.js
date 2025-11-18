@@ -8,6 +8,7 @@ class Properties {
     propertiesType = []
     isFiltered = false
     propertiesSuperhost = []
+    propertyItem = {}
     constructor() {
         makeAutoObservable(this)
     }
@@ -16,7 +17,6 @@ class Properties {
         runInAction(() => {
                 $api.get("/property")
                 .then(data => {
-                    console.log(data)
                     this.propertiesList = [...data.data]
                     this.propertiesLocation = [...new Set(this.propertiesList.map(item => item.location))];
                     this.propertiesType = [...new Set(this.propertiesList.map(item => item.capacity.bedroom))];
@@ -39,7 +39,6 @@ class Properties {
             this.filteredPropertiesList = res
         }
         if(superhost) {
-            // console.log(superhost)
             const res = this.propertiesList.filter(item=> item.superhost === superhost)
             this.filteredPropertiesList = res
         }
@@ -47,6 +46,16 @@ class Properties {
     }
     showAllProperties() {
         this.isFiltered = false
+
+    }
+    fetchPropertyById (id) {
+        runInAction(() => {
+            $api.get(`/property/${id}`)
+                .then(data => {
+                    this.propertyItem = data.data
+                })
+        })
+
 
     }
 }

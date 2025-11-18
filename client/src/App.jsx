@@ -1,5 +1,5 @@
 import Home from "./Home.jsx";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import properties from "./store/properties.js";
 import auth from "./store/auth.js";
 import Header from "./Header.jsx";
@@ -17,7 +17,7 @@ function App() {
     return (
         <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-
+                <Header/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/profile" element={<Profile/>}/>

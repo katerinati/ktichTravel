@@ -18,7 +18,6 @@ const  Home = observer(() => {
 
             <div className={styles.bg}>
                 <div className={styles.profileMenuWrapper}>
-                <Header/>
                 </div>
 
                 <h1>Peace, nature, dream</h1>

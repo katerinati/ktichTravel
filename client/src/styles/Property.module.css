@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.propertyItemWrapper {
+    position: relative;
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    border: 1px solid white;
+    background-color: #d9dcd6;
+
+    @media (max-width: 1024px) {
+        .card {
+            flex: 0 0 calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            flex: 0 0 100%;
+        }
+    }
+}
+.propertyImg {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+}
+.cardDetails {
+    display: flex;
+}
+.bedroomImg {
+    background: url("../assets/building.png") center/cover no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    align-self: center;
+
+}
+.guestsImg {
+    background: url("../assets/user.png") center/cover no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    align-self: center
+}
+.bedroomText {
+    margin-right: 15px;
+}
+.superhost {
+    position: absolute;
+    top: 10px;
+    background-color: #00a5cf;
+    padding: 5px 15px;
+    border-radius: 10px;
+    display: flex;
+}
+.superhostImg {
+    background: url("../assets/star_superhost.png") center/cover no-repeat;
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    margin-left: 5px;
+}
+.cardFooter{
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #cbcdce63;
+    margin-top: 17px;
+    padding-top: 15px;
+}
+
+.ratingImg {
+    background: url("../assets/star_rating.png") center/cover no-repeat;
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+.ratingWrapper {
+    display: flex;
+    align-items: center;
+}
+.contentContainer {
+    padding: 0 30px 30px 30px;
+}
+
+.margin {
+    padding: 0 15px 15px 15px;
+}

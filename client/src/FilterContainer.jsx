@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from './App.module.css'
+import styles from './styles/Product.module.css'
 import properties from "./store/properties.js";
 import {observer} from "mobx-react-lite";
 

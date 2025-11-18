@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import styles from "./App.module.css"
+import styles from "./styles/Property.module.css"
 import {Link} from "react-router-dom";
 import properties from "./store/properties.js";
 

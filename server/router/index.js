@@ -17,6 +17,6 @@ router.get('/users', authMiddleware, userController.getUsers)
 router.get('/users/current', authMiddleware, userController.currentUser)
 router.patch('/profile', authMiddleware, userController.updateUser)
 router.get('/property', propertyController.getAllProperties)
-router.get('/property/:id', propertyController.getPropertyById)
+router.get('/property/:id',authMiddleware, propertyController.getPropertyById)
 
 module.exports = router;

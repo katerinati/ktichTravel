@@ -1,0 +1,115 @@
+.filterContainer {
+    display: flex;
+    padding: 20px;
+    background-color: #374F43;
+    /*border-radius: 10px;*/
+    /*border: 1px solid white;*/
+    justify-content: space-between;
+}
+.filterBtn {
+    background: transparent;
+    border: 0;
+    color: #242220;
+    cursor: pointer;
+    box-shadow: none;
+    font-size: 15px;
+}
+.filterBtnActive {
+    background-color: #004e64;
+    border: 1px solid #636566;
+    box-shadow: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #242220;
+    cursor: pointer;
+    padding: 5px 8px;
+    font-weight: bold;
+}
+.propertyTypeWrapper {
+    cursor: pointer;
+    display: flex;
+
+}
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.toggleInput {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggleSlider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 1px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggleInput:checked + .toggleSlider {
+    background-color: #2196F3;
+}
+
+.toggleInput:checked + .toggleSlider:before {
+    transform: translateX(30px);
+}
+
+.toggleInput:focus + .toggleSlider {
+    box-shadow: 0 0 1px #2196F3;
+}
+.superhostWrapper {
+    margin-right: 35px;
+}
+.propertyTypeBtnWrapperActive {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+}
+
+.propertyTypeBtnWrapper {
+    display: none;
+}
+.propertyTypeBtn {
+    background-color: transparent;
+    border: 0;
+    color: #242220;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.price {
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+

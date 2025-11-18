@@ -14,6 +14,7 @@ import $api from "../http/index.js";
         try {
             const res = await $api.get("/users/current");
             this.currentUserData = res.data;
+            this.isUserUnauthorised = false;
 
             console.log(res.data)
         } catch(err) {

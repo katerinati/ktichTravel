@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import auth from "./store/auth.js";
 import AuthPopUp from "./AuthPopUp.jsx";
-import styles from "./styles/Auth.module.css"
+import styles from "./styles/Header.module.css"
 import {observer} from "mobx-react-lite";
 import ProfileMenu from "./ProfileMenu.jsx";
 
@@ -18,7 +18,8 @@ const Header = observer(() => {
     }, [profileMenuVisible])
 
     return (
-        <div>
+        <div className={styles.wrapper}>
+            <div className={styles.logo}/>
 
             {auth.currentUserData?.email.length > 0 && auth.currentUserData.email.length !== undefined
                 ?

@@ -1,0 +1,32 @@
+.avatar {
+    background:   url("../assets/avatar.png")  no-repeat center/contain;
+    width: 70px;
+    height: 120px;
+}
+.avatarSmall {
+    background:  url("../assets/avatar.png")  no-repeat center/contain;
+    width: 60px;
+    height: 60px;
+}
+.authBtn {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+.authBtn:hover {
+    font-size: 20px;
+}
+.logo {
+    background:  url("../assets/logo.png")  no-repeat center/contain;
+    width: 130px;
+    height: 120px;
+}
+.wrapper {
+    background-color: #B4C3C0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}

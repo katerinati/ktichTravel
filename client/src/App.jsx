@@ -8,6 +8,8 @@ import Profile from "./Profile.jsx";
 import Property from "./Property.jsx";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers";
+import ProtectedRoute from "./ProtectedRoute.jsx";
+import Login from "./Login.jsx";
 
 function App() {
     useEffect(() => {
@@ -20,8 +22,9 @@ function App() {
                 <Header/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="/login" element={<Login/>}/>
                     <Route path="/profile" element={<Profile/>}/>
-                    <Route path="/property/:id" element={<Property/>}/>
+                    <Route path="/property/:id" element={<ProtectedRoute><Property/></ProtectedRoute>}/>
 
                 </Routes>
             </LocalizationProvider>

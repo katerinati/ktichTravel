@@ -1,5 +1,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import $api from "../http/index.js";
+import auth from "../store/auth.js";
 
 class Properties {
     propertiesList = []
@@ -9,6 +10,9 @@ class Properties {
     isFiltered = false
     propertiesSuperhost = []
     propertyItem = {}
+
+
+
     constructor() {
         makeAutoObservable(this)
     }
@@ -52,7 +56,17 @@ class Properties {
         runInAction(() => {
             $api.get(`/property/${id}`)
                 .then(data => {
+                    auth.isLoading = true
+                    console.log('до', auth.isLoading)
                     this.propertyItem = data.data
+
+
+                    if(data.status === 200) {
+                        auth.isLoading = false
+                        console.log('после', auth.isLoading)
+
+                        auth.isUserUnauthorised = false
+                    }
                 })
         })
 

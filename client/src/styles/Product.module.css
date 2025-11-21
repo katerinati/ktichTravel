@@ -9,13 +9,13 @@
 .filterBtn {
     background: transparent;
     border: 0;
-    color: #242220;
+    color: white;
     cursor: pointer;
     box-shadow: none;
     font-size: 15px;
 }
 .filterBtnActive {
-    background-color: #004e64;
+    background-color: #8BC6A9;
     border: 1px solid #636566;
     box-shadow: none;
     border-radius: 5px;

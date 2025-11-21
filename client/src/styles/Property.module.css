@@ -7,7 +7,7 @@
 
 .propertyItemWrapper {
     position: relative;
-    flex: 0 0 calc(33.333% - 20px);
+    flex: 0 0 calc(25.333% - 20px);
     min-width: 300px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -92,4 +92,12 @@
 
 .margin {
     padding: 0 15px 15px 15px;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin-top: 20px;
+}
+img {
+    width: 35%;
 }

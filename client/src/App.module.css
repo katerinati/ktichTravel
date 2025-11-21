@@ -5,7 +5,18 @@
     background: url("assets/bg.jpg") no-repeat center/cover ;
     height: 600px;
     padding: 30px 30px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-shadow: 7px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.bg h1 {
+    font-size: 50px;
+}
+.bg p {
+    font-size: 45px;
 }
 
 .profileMenuWrapper {
@@ -18,5 +29,6 @@
      gap: 20px;
      justify-content: center;
      padding: 20px;
+    margin: 20px;
  }
 

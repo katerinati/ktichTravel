@@ -4,6 +4,7 @@ import AuthPopUp from "./AuthPopUp.jsx";
 import styles from "./styles/Header.module.css"
 import {observer} from "mobx-react-lite";
 import ProfileMenu from "./ProfileMenu.jsx";
+import {Link} from "react-router-dom";
 
 
 const Header = observer(() => {
@@ -19,7 +20,9 @@ const Header = observer(() => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.logo}/>
+            <Link to="/">
+                <div className={styles.logo}/>
+            </Link>
 
             {auth.currentUserData?.email.length > 0 && auth.currentUserData.email.length !== undefined
                 ?
@@ -33,10 +36,10 @@ const Header = observer(() => {
                     }
                 </div>
                 :
-                <button className={styles.authBtn} onClick={showPopUp}>Войти/зарегистрироваться</button>
+                <button className={styles.authBtn} onClick={showPopUp}>Войти/Зарегистрироваться</button>
 
             }
-            <AuthPopUp isVisible={popupVisible} changePopupVisible={setPopupVisible} />
+            <AuthPopUp isVisible={popupVisible} changePopupVisible={setPopupVisible}/>
         </div>
     );
 });

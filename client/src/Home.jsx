@@ -15,13 +15,10 @@ const  Home = observer(() => {
     }, [properties]);
     return (
         <>
-
             <div className={styles.bg}>
-                <div className={styles.profileMenuWrapper}>
-                </div>
-
                 <h1>Peace, nature, dream</h1>
                 <p>Find and book a great experience</p>
+                <div className={styles.profileMenuWrapper}/>
             </div>
             <div className={styles.contentContainer}>
 

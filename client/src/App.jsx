@@ -24,7 +24,7 @@ function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/profile" element={<Profile/>}/>
-                    <Route path="/property/:id" element={<ProtectedRoute><Property/></ProtectedRoute>}/>
+                    <Route path="/property/:id" element={<Property/>}/>
 
                 </Routes>
             </LocalizationProvider>

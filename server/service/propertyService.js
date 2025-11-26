@@ -5,16 +5,15 @@ class PropertyService {
     async getAllProperty() {
         const properties = await PropertyModel.find()
         return properties
+    }
+
+    async getPropertyById(req, propertyId) {
+        if (req.user) {
+            const property = await PropertyModel.findOne({propertyId})
+            return property
+        }
 
     }
-   async getPropertyById(propertyId) {
-        // console.log(req.params.id)
-       console.log(typeof propertyId)
-       console.log(propertyId)
-       const property =  await PropertyModel.findOne({propertyId})
-       // console.log(property)
-       return property
-   }
 
 }
 

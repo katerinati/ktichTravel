@@ -17,7 +17,7 @@ class PropertyController {
            console.log(typeof propertyId)
            console.log(typeof propertyId)
 
-           const property = await propertyService.getPropertyById(parseInt(propertyId))
+           const property = await propertyService.getPropertyById(req,parseInt(propertyId))
           return  res.json(property)
        } catch (e) {
            next(e)

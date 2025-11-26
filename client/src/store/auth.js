@@ -66,6 +66,13 @@ import $api from "../http/index.js";
              console.log(err)
          }
      }
+     async logOut() {
+        try {
+            const res = await $api.post("/logout");
+        } catch (err) {
+            console.log(err)
+        }
+     }
 
 }
 

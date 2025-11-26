@@ -31,7 +31,8 @@ const Property = observer(() => {
             // console.log(dateValue)
            const jsonData =  dateValue.map(date => date.toISOString())
             console.log(jsonData);
-           auth.addTrip({trip: jsonData})
+           const data = [...jsonData, {location: properties.propertyItem.location}]
+           auth.addTrip(data)
         }
     }
 

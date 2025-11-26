@@ -83,8 +83,10 @@ class UserController {
 
     async currentUser(req, res, next) {
         try {
-            const currentUser = req.user;
+
+            const currentUser = await userServices.currentUser(req,res)
             return res.json(currentUser);
+
         } catch (error) {
             next(error);
         }

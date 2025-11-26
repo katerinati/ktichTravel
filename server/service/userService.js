@@ -55,6 +55,10 @@ class UserService {
             user: userDto,
         }
     }
+    async currentUser(req, res, next) {
+        const user = await UserModel.findById(req.user)
+        return user
+    }
 
     async logout(refreshToken) {
         const token = await tokenService.removeToken(refreshToken);
@@ -88,7 +92,7 @@ class UserService {
 
     async updateUser(req, res) {
         const {firstName, lastName, age, dreamCountry} = req.body;
-        const user = await UserModel.findOneAndUpdate({_id: req.user.id}, {
+        const user = await UserModel.findOneAndUpdate({_id: req.user}, {
             firstName,
             lastName,
             age,
@@ -105,7 +109,7 @@ class UserService {
 
     async addTrip(req) {
         console.log(req.body)
-        const user = await UserModel.findOneAndUpdate({_id: req.user.id}, {$push: {travelHistory: req.body}}, {new: true});
+        const user = await UserModel.findOneAndUpdate({_id: req.user}, {$push: {travelHistory: req.body}}, {new: true});
         console.log('addTrip', req.body, req.user.id)
         const userDto = new UserDto(user);
         return {

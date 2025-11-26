@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import styles from "./styles/Property.module.css";
 import {DateRangePicker} from "@mui/x-date-pickers-pro";
 import dayjs from "dayjs";
+import auth from "./store/auth.js";
 
 const Property = observer(() => {
     console.log("propertyItem", properties.propertyItem)
@@ -30,6 +31,7 @@ const Property = observer(() => {
             // console.log(dateValue)
            const jsonData =  dateValue.map(date => date.toISOString())
             console.log(jsonData);
+           auth.addTrip({trip: jsonData})
         }
     }
 

@@ -6,6 +6,7 @@ module.exports = class UserDto {
     lastName;
     age;
     dreamCountry;
+    travelHistory;
 
     constructor(model) {
         this.email = model.email;
@@ -15,6 +16,7 @@ module.exports = class UserDto {
         this.lastName = model.lastName;
         this.age = model.age;
         this.dreamCountry = model.dreamCountry;
+        this.travelHistory = model.travelHistory;
 
     }
 }

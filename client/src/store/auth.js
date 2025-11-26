@@ -51,12 +51,21 @@ import $api from "../http/index.js";
             try {
 
                 const res = await $api.patch("/profile", userData);
-                console.log('now', userData, this.currentUserData.id);
                 console.log(res.data)
             } catch (err) {
                 console.log(err)
             }
     }
+     async addTrip(userData) {
+         try {
+             console.log('before fetch', userData);
+             const res = await $api.patch("/profile/trips", userData);
+
+             console.log(res.data)
+         } catch (err) {
+             console.log(err)
+         }
+     }
 
 }
 

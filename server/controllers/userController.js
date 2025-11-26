@@ -1,15 +1,16 @@
 const userServices = require('../service/userService');
 const {validationResult} = require("express-validator");
 const ApiError = require("../exception/apiError")
+const res = require("express/lib/response");
 
 class UserController {
-    async registration(req,res, next) {
+    async registration(req, res, next) {
         try {
             const errors = validationResult(req)
-            if(!errors.isEmpty()) {
+            if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest('Ошибка при валидации', errors.array()));
             }
-            const {id,email, password} = req.body;
+            const {id, email, password} = req.body;
             const userData = await userServices.registration(id, email, password);
             res.cookie('refreshToken', userData.refreshToken, {
                 httpOnly: true,
@@ -18,10 +19,11 @@ class UserController {
             return res.json(userData);
 
         } catch (error) {
-           next(error);
+            next(error);
         }
     }
-    async login(req,res, next) {
+
+    async login(req, res, next) {
         try {
             const {email, password} = req.body;
             const userData = await userServices.login(email, password);
@@ -34,7 +36,8 @@ class UserController {
             next(error);
         }
     }
-    async logout(req,res, next) {
+
+    async logout(req, res, next) {
         try {
             const {refreshToken} = req.cookies;
             const token = await userServices.logout(refreshToken);
@@ -44,16 +47,18 @@ class UserController {
             next(error);
         }
     }
-    async activate(req,res, next) {
+
+    async activate(req, res, next) {
         try {
             const activationLink = req.params.link;
             await userServices.activate(activationLink);
-            return  res.redirect(process.env.CLIENT_URL)
+            return res.redirect(process.env.CLIENT_URL)
         } catch (error) {
             console.log(error);
         }
     }
-    async refresh(req,res, next) {
+
+    async refresh(req, res, next) {
         try {
             const {refreshToken} = req.cookies;
             const userData = await userServices.refresh(refreshToken);
@@ -66,7 +71,8 @@ class UserController {
             next(error);
         }
     }
-    async getUsers(req,res, next) {
+
+    async getUsers(req, res, next) {
         try {
             const users = await userServices.getAllUsers()
             return res.json(users)
@@ -74,7 +80,8 @@ class UserController {
             next(error);
         }
     }
-    async currentUser(req,res, next) {
+
+    async currentUser(req, res, next) {
         try {
             const currentUser = req.user;
             return res.json(currentUser);
@@ -82,16 +89,26 @@ class UserController {
             next(error);
         }
     }
-    async updateUser(req,res, next) {
+
+    async updateUser(req, res, next) {
         try {
             // const {id, firstName, lastName, age, dreamCountry} = req.body;
             // const {id} = req.params;
             // console.log('body', req.body.id)
             // console.log(id)
-            const userData = await userServices.updateUser(req,res)
+            const userData = await userServices.updateUser(req, res)
 
             return res.json(userData);
 
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async addTrip(req, res, next) {
+        try {
+            const user = await userServices.addTrip(req, res)
+            return res.json(user);
         } catch (error) {
             next(error);
         }

@@ -5,6 +5,7 @@ const mailService = require('../service/mailService');
 const tokenService = require('../service/tokenService');
 const UserDto = require("../dtos/userDto");
 const ApiError = require("../exception/apiError");
+const req = require("express/lib/request");
 
 
 class UserService {
@@ -87,11 +88,26 @@ class UserService {
 
     async updateUser(req, res) {
         const {firstName, lastName, age, dreamCountry} = req.body;
-        const user = await UserModel.findOneAndUpdate({_id: req.user.id}, {firstName, lastName, age, dreamCountry}, {new: true});
+        const user = await UserModel.findOneAndUpdate({_id: req.user.id}, {
+            firstName,
+            lastName,
+            age,
+            dreamCountry
+        }, {new: true});
 
 
         const userDto = new UserDto(user);
 
+        return {
+            user: userDto,
+        }
+    }
+
+    async addTrip(req) {
+        console.log(req.body)
+        const user = await UserModel.findOneAndUpdate({_id: req.user.id}, {$push: {travelHistory: req.body}}, {new: true});
+        console.log('addTrip', req.body, req.user.id)
+        const userDto = new UserDto(user);
         return {
             user: userDto,
         }

@@ -72,15 +72,6 @@ class UserController {
         }
     }
 
-    async getUsers(req, res, next) {
-        try {
-            const users = await userServices.getAllUsers()
-            return res.json(users)
-        } catch (error) {
-            next(error);
-        }
-    }
-
     async currentUser(req, res, next) {
         try {
 
@@ -94,12 +85,7 @@ class UserController {
 
     async updateUser(req, res, next) {
         try {
-            // const {id, firstName, lastName, age, dreamCountry} = req.body;
-            // const {id} = req.params;
-            // console.log('body', req.body.id)
-            // console.log(id)
             const userData = await userServices.updateUser(req, res)
-
             return res.json(userData);
 
         } catch (error) {

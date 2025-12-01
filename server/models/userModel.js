@@ -10,6 +10,6 @@ const UserSchema = new Schema({
     lastName: {type: String},
     age: {type: String},
     dreamCountry: {type: String},
-    travelHistory: [],
+    travelHistory: {type: []},
 })
 module.exports = model('User', UserSchema);

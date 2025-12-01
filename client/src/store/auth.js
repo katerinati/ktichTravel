@@ -15,8 +15,8 @@ import $api from "../http/index.js";
     async fetchUser() {
         try {
             this.isLoading = true;
-            const res = await $api.get("/users/current");
-            this.currentUserData = res.data;
+            const res = await $api.get("/auth/me");
+            this.currentUserData = res.data.user;
 
             if (res.status === 200) {
                 this.isLoading = false;
@@ -50,7 +50,7 @@ import $api from "../http/index.js";
     async updateUser(userData) {
             try {
 
-                const res = await $api.patch("/profile", userData);
+                const res = await $api.patch("/auth/me/update", userData);
                 console.log(res.data)
             } catch (err) {
                 console.log(err)
@@ -59,7 +59,7 @@ import $api from "../http/index.js";
      async addTrip(userData) {
          try {
              console.log('before fetch', userData);
-             const res = await $api.patch("/profile/trips", userData);
+             const res = await $api.patch("/auth/me/trips", userData);
 
              console.log(res.data)
          } catch (err) {

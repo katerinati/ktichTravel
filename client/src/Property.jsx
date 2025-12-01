@@ -10,7 +10,7 @@ import auth from "./store/auth.js";
 const Property = observer(() => {
     console.log("propertyItem", properties.propertyItem)
     const {id} = useParams();
-    const [dateValue, setDateValue] = useState([null, null])
+    const [dateValue, setDateValue] = useState( [null, null])
 
     // console.log(dateValue)
 
@@ -31,7 +31,7 @@ const Property = observer(() => {
             // console.log(dateValue)
            const jsonData =  dateValue.map(date => date.toISOString())
             console.log(jsonData);
-           const data = [...jsonData, {location: properties.propertyItem.location}]
+           const data = {trip:[...jsonData, {location: properties.propertyItem.location}]}
            auth.addTrip(data)
         }
     }

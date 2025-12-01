@@ -40,7 +40,7 @@ class UserService {
     async login(email, password) {
         const user = await UserModel.findOne({email});
         if (!user) {
-            throw ApiError.BadRequest("Пользователь с таким email не найден")
+            throw ApiError.BadRequest("Пользователь не найден")
         }
         const isPasswordsEquals = await bcrypt.compare(password, user.password);
         if (!isPasswordsEquals) {
@@ -57,7 +57,10 @@ class UserService {
     }
     async currentUser(req, res, next) {
         const user = await UserModel.findById(req.user)
-        return user
+        const userDto = new UserDto(user);
+        return {
+            user: userDto,
+        }
     }
 
     async logout(refreshToken) {
@@ -84,38 +87,37 @@ class UserService {
         }
     }
 
-    async getAllUsers() {
-        const users = await UserModel.find();
-        console.log('getAllUsers')
-        return users;
-    }
-
     async updateUser(req, res) {
         const {firstName, lastName, age, dreamCountry} = req.body;
-        const user = await UserModel.findOneAndUpdate({_id: req.user}, {
-            firstName,
-            lastName,
-            age,
-            dreamCountry
-        }, {new: true});
 
 
-        const userDto = new UserDto(user);
 
-        return {
-            user: userDto,
+        if(req.body.firstName !== undefined && req.body.lastName !== undefined && req.body.age !== undefined && req.body.dreamCountry !== undefined  ) {
+            const user = await UserModel.findOneAndUpdate({_id: req.user}, {
+                firstName,
+                lastName,
+                age,
+                dreamCountry
+            }, {new: true});
+            const userDto = new UserDto(user);
+
+            return {
+                user: userDto,
+            }
+        } else if (req.body.trip !== undefined) {
+            const user = await UserModel.findOneAndUpdate({_id: req.user}, {$push: {travelHistory: req.body.trip}}, {new: true});
+            const userDto = new UserDto(user);
+            return {
+                user: userDto,
+            }
         }
+
     }
 
-    async addTrip(req) {
-        console.log(req.body)
-        const user = await UserModel.findOneAndUpdate({_id: req.user}, {$push: {travelHistory: req.body}}, {new: true});
-        console.log('addTrip', req.body, req.user.id)
-        const userDto = new UserDto(user);
-        return {
-            user: userDto,
-        }
-    }
+    // async addTrip(req) {
+    //     console.log(req.body.trip)
+    //
+    // }
 }
 
 module.exports = new UserService();

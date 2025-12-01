@@ -10,6 +10,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import Login from "./Login.jsx";
+import Footer from "./Footer.jsx";
 
 function App() {
     useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/property/:id" element={<Property/>}/>
 
                 </Routes>
+                <Footer/>
             </LocalizationProvider>
         </div>
     )

@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose")
-const router = require("./router/index");
+const router = require("./router");
 const errorMiddleware = require("./middlewares/errorMiddleware");
 
 const PORT = process.env.PORT || 3000;
@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:5173"
+    origin: process.env.CLIENT_URL
 
 }));
 app.use(cookieParser());
